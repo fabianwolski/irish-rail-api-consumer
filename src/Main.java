@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
-
+import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
@@ -22,10 +22,16 @@ public class Main {
             //fetch data
             IrishRailAPI api = new IrishRailAPI();
             String data = api.getData(code, mins);
-//            System.out.println(data);
-            //create HTML+save file
+            //System.out.println(data);
+            //parsing
+            ParseXML parser = new ParseXML();
+            List<TrainDetails> trains = parser.parseTrainData(data);
 
-        } catch (Exception e) {
+            System.out.println("trains: " + trains.size());
+            for (TrainDetails train : trains) {
+                System.out.println(train);}
+            //create HTML+save file
+        }catch(Exception e) {
             System.err.println("error: " + e.getMessage());
         }
     }
