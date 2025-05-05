@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="60">
+  <title>Train Times - {{STATION_CODE}}</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>{{STATION_CODE}} Station</h1>
+  <p class="info">Last Updated: {{CURRENT_DATETIME}}</p>
+  <p class="info">Trains: {{TRAIN_COUNT}}</p>
+
+  <table>
+    <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Arrival</th>
+      <th>Departure</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{TRAIN_ROWS}}
+    </tbody>
+  </table>
+  <p class="footer">Irish Rail</p>
+  <p class="footer">Refresh in <span id="counter">60</span>s</p>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
