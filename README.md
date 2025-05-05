@@ -2,6 +2,10 @@
 
 A simple Java application that consumes the Irish Rail API to display real-time train timetables.
 
+
+![image](https://github.com/user-attachments/assets/ef9e5e0d-e8ff-461d-8d20-bbbeae6b920c)
+
+
 ## Overview
 
 This application fetches real-time train information from the Irish Rail API for any specified station, parses the XML data, and generates a clean HTML timetable. The timetable displays key information including:
