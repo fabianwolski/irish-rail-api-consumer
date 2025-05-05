@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.util.List;
+import java.awt.Desktop;
 public class Main {
 
     public static void main(String[] args) {
@@ -10,7 +11,8 @@ public class Main {
             String code = scanner.nextLine().trim();
 
             if (code.isEmpty()) {
-                code = "ENFLD";}
+                code = "ENFLD";
+            }
 
             System.out.print("Enter time window in minutes-defaults to 90(90 is max): ");
             String mins = scanner.nextLine().trim();
@@ -29,11 +31,25 @@ public class Main {
 
             System.out.println("trains: " + trains.size());
             for (TrainDetails train : trains) {
-                System.out.println(train);}
+                System.out.println(train);
+            }
+
+
             //create HTML+save file
-        }catch(Exception e) {
+            GenerateHTML htmlGenerator = new GenerateHTML();
+            String pathOnSave = htmlGenerator.generateTimetable(trains, code);
+            System.out.println("see file path for save: " + pathOnSave);
+
+            //open xml auto in browser
+            File htmlFile = new File(pathOnSave);
+            if(htmlFile.exists() && Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().browse(htmlFile.toURI());
+            }else {
+                System.out.println("Auto open fail, open manually instead");
+            }
+
+        } catch (Exception e) {
             System.err.println("error: " + e.getMessage());
         }
     }
-    //open xml auto in browser????
 }
